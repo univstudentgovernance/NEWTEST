@@ -39,39 +39,48 @@
     },
     {
       "name": "이대학보",
-      "url": "https://inews.ewha.ac.kr/rss/allArticle.xml"
+      "url": "https://inews.ewha.ac.kr/rss/allArticle.xml",
+      "university_domain": "ewha.ac.kr"
     },
     {
       "name": "대학신문",
-      "url": "https://www.snunews.com/rss/allArticle.xml"
+      "url": "https://www.snunews.com/rss/allArticle.xml",
+      "university_domain": "snu.ac.kr"
     },
     {
       "name": "연세춘추",
-      "url": "https://chunchu.yonsei.ac.kr/rss/allArticle.xml"
+      "url": "https://chunchu.yonsei.ac.kr/rss/allArticle.xml",
+      "university_domain": "yonsei.ac.kr"
     },
     {
       "name": "고대신문",
-      "url": "https://www.kunews.ac.kr/rss/allArticle.xml"
+      "url": "https://www.kunews.ac.kr/rss/allArticle.xml",
+      "university_domain": "korea.ac.kr"
     },
     {
       "name": "채널PNU",
-      "url": "https://channelpnu.pusan.ac.kr/rss/allArticle.xml"
+      "url": "https://channelpnu.pusan.ac.kr/rss/allArticle.xml",
+      "university_domain": "pusan.ac.kr"
     },
     {
       "name": "서울시립대신문",
-      "url": "https://press.uos.ac.kr/rss/allArticle.xml"
+      "url": "https://press.uos.ac.kr/rss/allArticle.xml",
+      "university_domain": "uos.ac.kr"
     },
     {
       "name": "충대신문",
-      "url": "https://press.cnu.ac.kr/rss/allArticle.xml"
+      "url": "https://press.cnu.ac.kr/rss/allArticle.xml",
+      "university_domain": "cnu.ac.kr"
     },
     {
       "name": "숭대시보",
-      "url": "https://www.ssunews.net/rss/allArticle.xml"
+      "url": "https://www.ssunews.net/rss/allArticle.xml",
+      "university_domain": "ssu.ac.kr"
     },
     {
       "name": "KNSU 미디어",
-      "url": "https://news.knsu.ac.kr/rss/allArticle.xml"
+      "url": "https://news.knsu.ac.kr/rss/allArticle.xml",
+      "university_domain": "knsu.ac.kr"
     }
   ],
   "queries": [

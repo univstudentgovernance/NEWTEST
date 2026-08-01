@@ -114,7 +114,17 @@ def fetch_google_feed(query: str) -> list[dict]:
 
 def fetch_publisher_feed(source: dict) -> list[dict]:
     # Official publisher RSS items normally contain the publisher's own article URL.
-    return parse_rss(fetch_xml(source["url"]), source["name"])
+    rows = parse_rss(fetch_xml(source["url"]), source["name"])
+    university_domain = source.get("university_domain")
+    if university_domain:
+        logo = "https://www.google.com/s2/favicons?" + urllib.parse.urlencode({
+            "domain": university_domain,
+            "sz": 256,
+        })
+        for row in rows:
+            row["image_url"] = logo
+            row["thumbnail_type"] = "university_logo"
+    return rows
 
 
 def google_search_fallback(item: dict) -> str:
