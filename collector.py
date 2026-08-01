@@ -115,15 +115,15 @@ def fetch_google_feed(query: str) -> list[dict]:
 def fetch_publisher_feed(source: dict) -> list[dict]:
     # Official publisher RSS items normally contain the publisher's own article URL.
     rows = parse_rss(fetch_xml(source["url"]), source["name"])
-    university_domain = source.get("university_domain")
-    if university_domain:
-        logo = "https://www.google.com/s2/favicons?" + urllib.parse.urlencode({
-            "domain": university_domain,
-            "sz": 256,
-        })
-        for row in rows:
-            row["image_url"] = logo
+    university = source.get("university")
+    for row in rows:
+        if university:
+            row["image_url"] = source.get("logo_url", "")
             row["thumbnail_type"] = "university_logo"
+            row["publisher_group"] = "university_press"
+            row["universities"] = [university]
+        else:
+            row["publisher_group"] = "official_media"
     return rows
 
 
@@ -176,7 +176,18 @@ def accepted(item: dict, config: dict) -> bool:
         return False
     has_core = any(word.lower() in haystack for word in config["required_any"])
     has_context = any(word.lower() in haystack for word in config["university_context"])
-    return has_core and has_context
+    # The feed itself supplies the university context for a campus newspaper.
+    return has_core and (has_context or item.get("publisher_group") == "university_press")
+
+
+def detect_universities(item: dict, config: dict) -> list[str]:
+    """Tag articles so one university filter spans campus and national media."""
+    detected = list(item.get("universities", []))
+    haystack = f"{item['title']} {item['summary']}".lower()
+    for university, aliases in config.get("university_aliases", {}).items():
+        if university not in detected and any(alias.lower() in haystack for alias in aliases):
+            detected.append(university)
+    return detected
 
 
 def category(item: dict, config: dict) -> str:
@@ -217,6 +228,8 @@ def main() -> None:
     for index, query in enumerate(config["queries"]):
         try:
             for item in fetch_google_feed(query):
+                item["publisher_group"] = "official_media"
+                item["universities"] = detect_universities(item, config)
                 if accepted(item, config):
                     item["id"] = identity(item)
                     item["category"] = category(item, config)
@@ -255,6 +268,7 @@ def main() -> None:
     for source in config.get("rss_sources", []):
         try:
             for item in fetch_publisher_feed(source):
+                item["universities"] = detect_universities(item, config)
                 if item["title"] and item["url"] and accepted(item, config):
                     item["id"] = identity(item)
                     item["category"] = category(item, config)
@@ -275,6 +289,7 @@ def main() -> None:
         "updated_at": datetime.now(KST).isoformat(),
         "item_count": len(items),
         "collection_policy": "RSS metadata only; article pages are not crawled",
+        "universities": list(config.get("university_aliases", {}).keys()),
         "failures": failures,
         "items": items,
     }

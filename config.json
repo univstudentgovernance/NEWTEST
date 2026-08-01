@@ -40,49 +40,69 @@
     {
       "name": "이대학보",
       "url": "https://inews.ewha.ac.kr/rss/allArticle.xml",
-      "university_domain": "ewha.ac.kr"
+      "university": "이화여자대학교",
+      "logo_url": "https://cdn.inews.ewha.ac.kr/image/logo/toplogo_20220512015353.png"
     },
     {
       "name": "대학신문",
       "url": "https://www.snunews.com/rss/allArticle.xml",
-      "university_domain": "snu.ac.kr"
+      "university": "서울대학교",
+      "logo_url": "https://cdn.snunews.com/image/logo/s_logo.jpg"
     },
     {
       "name": "연세춘추",
       "url": "https://chunchu.yonsei.ac.kr/rss/allArticle.xml",
-      "university_domain": "yonsei.ac.kr"
+      "university": "연세대학교",
+      "logo_url": "https://cdn.chunchu.yonsei.ac.kr/image/logo/toplogo_20210429114341.png"
     },
     {
       "name": "고대신문",
       "url": "https://www.kunews.ac.kr/rss/allArticle.xml",
-      "university_domain": "korea.ac.kr"
+      "university": "고려대학교",
+      "logo_url": "https://cdn.kunews.ac.kr/image/logo/logo.svg"
     },
     {
       "name": "채널PNU",
       "url": "https://channelpnu.pusan.ac.kr/rss/allArticle.xml",
-      "university_domain": "pusan.ac.kr"
+      "university": "부산대학교",
+      "logo_url": "https://cdn.channelpnu.pusan.ac.kr/image/logo/toplogo_20230202014037.png"
     },
     {
       "name": "서울시립대신문",
       "url": "https://press.uos.ac.kr/rss/allArticle.xml",
-      "university_domain": "uos.ac.kr"
+      "university": "서울시립대학교",
+      "logo_url": "https://cdn.press.uos.ac.kr/image/logo/toplogo_20200421033805.png"
     },
     {
       "name": "충대신문",
       "url": "https://press.cnu.ac.kr/rss/allArticle.xml",
-      "university_domain": "cnu.ac.kr"
+      "university": "충남대학교",
+      "logo_url": "https://cdn.press.cnu.ac.kr/image/logo/toplogo_20220217035554.png"
     },
     {
       "name": "숭대시보",
       "url": "https://www.ssunews.net/rss/allArticle.xml",
-      "university_domain": "ssu.ac.kr"
+      "university": "숭실대학교",
+      "logo_url": "https://cdn.ssunews.net/image/logo/toplogo2.png"
     },
     {
       "name": "KNSU 미디어",
       "url": "https://news.knsu.ac.kr/rss/allArticle.xml",
-      "university_domain": "knsu.ac.kr"
+      "university": "한국체육대학교",
+      "logo_url": "https://cdn.news.knsu.ac.kr/image/logo/toplogo_20250328052326.png"
     }
   ],
+  "university_aliases": {
+    "이화여자대학교": ["이화여자대학교", "이화여대", "이대"],
+    "서울대학교": ["서울대학교", "서울대", "SNU"],
+    "연세대학교": ["연세대학교", "연세대"],
+    "고려대학교": ["고려대학교", "고려대"],
+    "부산대학교": ["부산대학교", "부산대", "PNU"],
+    "서울시립대학교": ["서울시립대학교", "서울시립대", "시립대"],
+    "충남대학교": ["충남대학교", "충남대"],
+    "숭실대학교": ["숭실대학교", "숭실대"],
+    "한국체육대학교": ["한국체육대학교", "한국체대", "한체대", "KNSU"]
+  },
   "queries": [
     "총학생회 OR 총학",
     "대학 학생자치",
