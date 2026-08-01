@@ -87,12 +87,18 @@ def parse_rss(root: ET.Element, source_name: str, matched_query: str = "") -> li
         source_node = item.find("source")
         link = text_of(item, "link", "guid").strip()
         raw_summary = text_of(item, "description", "{http://purl.org/rss/1.0/modules/content/}encoded")
+        source = clean(source_node.text if source_node is not None else source_name)
+        title = clean(text_of(item, "title"))
+        # Google News appends " - publisher" to titles. Remove only the exact
+        # source suffix so an official RSS copy can be deduplicated by headline.
+        if source_name == "Google News RSS" and source and title.endswith(f" - {source}"):
+            title = title[: -(len(source) + 3)].rstrip()
         rows.append({
-            "title": clean(text_of(item, "title")),
+            "title": title,
             "url": link,
             "summary": clean(raw_summary),
             "image_url": extract_image(raw_summary, item),
-            "source": clean(source_node.text if source_node is not None else source_name),
+            "source": source,
             "published_at": parse_date(text_of(item, "pubDate", "{http://purl.org/dc/elements/1.1/}date")).isoformat(),
             "matched_query": matched_query,
             "feed": source_name,
@@ -174,9 +180,10 @@ def category(item: dict, config: dict) -> str:
 
 
 def identity(item: dict) -> str:
-    # Title normalization catches the same syndicated story returned by several queries.
-    normalized = re.sub(r"[^0-9a-z가-힣]+", "", item["title"].lower())
-    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:20]
+    # Only completely identical, whitespace-cleaned headlines are duplicates.
+    # Punctuation or wording differences remain separate articles.
+    exact_title = clean(item["title"])
+    return hashlib.sha256(exact_title.encode("utf-8")).hexdigest()[:20]
 
 
 def load_existing() -> list[dict]:

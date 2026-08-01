@@ -36,6 +36,42 @@
     {
       "name": "JTBC 뉴스",
       "url": "https://fs.jtbc.co.kr/RSS/newsflash.xml"
+    },
+    {
+      "name": "이대학보",
+      "url": "https://inews.ewha.ac.kr/rss/allArticle.xml"
+    },
+    {
+      "name": "대학신문",
+      "url": "https://www.snunews.com/rss/allArticle.xml"
+    },
+    {
+      "name": "연세춘추",
+      "url": "https://chunchu.yonsei.ac.kr/rss/allArticle.xml"
+    },
+    {
+      "name": "고대신문",
+      "url": "https://www.kunews.ac.kr/rss/allArticle.xml"
+    },
+    {
+      "name": "채널PNU",
+      "url": "https://channelpnu.pusan.ac.kr/rss/allArticle.xml"
+    },
+    {
+      "name": "서울시립대신문",
+      "url": "https://press.uos.ac.kr/rss/allArticle.xml"
+    },
+    {
+      "name": "충대신문",
+      "url": "https://press.cnu.ac.kr/rss/allArticle.xml"
+    },
+    {
+      "name": "숭대시보",
+      "url": "https://www.ssunews.net/rss/allArticle.xml"
+    },
+    {
+      "name": "KNSU 미디어",
+      "url": "https://news.knsu.ac.kr/rss/allArticle.xml"
     }
   ],
   "queries": [
